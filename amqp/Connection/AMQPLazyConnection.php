@@ -69,7 +69,7 @@ class AMQPLazyConnection extends AMQPConnection
     }
 
     /**
-     * @return null|\PhpAmqpLib\Wire\IO\AbstractIO
+     * @return null|AbstractIO
      */
     protected function getIO()
     {

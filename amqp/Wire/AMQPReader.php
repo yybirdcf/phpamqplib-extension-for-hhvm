@@ -85,7 +85,7 @@ class AMQPReader
      *
      * AMQPTimeoutException can be raised if the timeout is set
      *
-     * @throws \PhpAmqpLib\Exception\AMQPTimeoutException
+     * @throws AMQPTimeoutException
      */
     protected function wait()
     {
@@ -110,8 +110,8 @@ class AMQPReader
      * @param $n
      *
      * @return string
-     * @throws \RuntimeException
-     * @throws \PhpAmqpLib\Exception\AMQPRuntimeException
+     * @throws RuntimeException
+     * @throws AMQPRuntimeException
      */
 
     protected function rawread($n)

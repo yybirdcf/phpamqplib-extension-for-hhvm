@@ -19,7 +19,7 @@ class AMQPChannel extends AbstractChannel
     /**
      * If the channel is in confirm_publish mode this array will store all published messages
      * until they get ack'ed or nack'ed
-     * @var \PhpAmqpLib\Message\AMQPMessage[]
+     * @var AMQPMessage[]
      */
     private $published_messages = array();
 
@@ -518,16 +518,16 @@ class AMQPChannel extends AbstractChannel
     /**
      * Called when the server sends a basic.ack
      *
-     * @param \PhpAmqpLib\Wire\AMQPReader $args
-     * @throws \PhpAmqpLib\Exception\AMQPRuntimeException
+     * @param AMQPReader $args
+     * @throws AMQPRuntimeException
      */
-    protected function basic_ack_from_server(\PhpAmqpLib\Wire\AMQPReader $args)
+    protected function basic_ack_from_server(AMQPReader $args)
     {
         $delivery_tag = $args->read_longlong();
         $multiple     = (bool) $args->read_bit();
 
         if (!isset($this->published_messages[$delivery_tag])) {
-            throw new \PhpAmqpLib\Exception\AMQPRuntimeException(sprintf(
+            throw new AMQPRuntimeException(sprintf(
                     'Server ack\'ed unknown delivery_tag %s',
                     $delivery_tag
                 )
@@ -541,7 +541,7 @@ class AMQPChannel extends AbstractChannel
      * Called when the server sends a basic.nack
      *
      * @param $args
-     * @throws \PhpAmqpLib\Exception\AMQPRuntimeException
+     * @throws AMQPRuntimeException
      */
     protected function basic_nack_from_server($args)
     {
@@ -549,7 +549,7 @@ class AMQPChannel extends AbstractChannel
         $multiple     = (bool) $args->read_bit();
 
         if (!isset($this->published_messages[$delivery_tag])) {
-            throw new \PhpAmqpLib\Exception\AMQPRuntimeException(sprintf(
+            throw new AMQPRuntimeException(sprintf(
                     'Server nack\'ed unknown delivery_tag %s',
                     $delivery_tag
                 )
@@ -1017,7 +1017,7 @@ class AMQPChannel extends AbstractChannel
      * Helper method to get a particular method from $this->publishedMessages, removes it from the array and returns it.
      *
      * @param $index
-     * @return \PhpAmqpLib\Message\AMQPMessage
+     * @return AMQPMessage
      */
     protected function get_and_unset_message($index)
     {
@@ -1030,12 +1030,12 @@ class AMQPChannel extends AbstractChannel
     /**
      * set callback for basic_return
      * @param  callable                  $callback
-     * @throws \InvalidArgumentException if $callback is not callable
+     * @throws InvalidArgumentException if $callback is not callable
      */
     public function set_return_listener($callback)
     {
         if (!is_callable($callback)) {
-            throw new \InvalidArgumentException("$callback should be callable.");
+            throw new InvalidArgumentException("$callback should be callable.");
         }
         $this->basic_return_callback = $callback;
     }
@@ -1048,7 +1048,7 @@ class AMQPChannel extends AbstractChannel
     public function set_nack_handler($callback)
     {
         if (!is_callable($callback)) {
-            throw new \InvalidArgumentException("$callback should be callable.");
+            throw new InvalidArgumentException("$callback should be callable.");
         }
         $this->nack_handler = $callback;
     }
@@ -1061,7 +1061,7 @@ class AMQPChannel extends AbstractChannel
     public function set_ack_handler($callback)
     {
         if (!is_callable($callback)) {
-            throw new \InvalidArgumentException("$callback should be callable.");
+            throw new InvalidArgumentException("$callback should be callable.");
         }
         $this->ack_handler = $callback;
     }

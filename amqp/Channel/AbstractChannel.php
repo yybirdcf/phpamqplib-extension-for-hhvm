@@ -26,8 +26,8 @@ class AbstractChannel
     protected $dispatch_reader = null;
     
     /**
-     * @param \PhpAmqpLib\Connection\AbstractConnection $connection
-     * @param                                       $channel_id
+     * @param AbstractConnection $connection
+     * @param $channel_id
      */
     public function __construct(AbstractConnection $connection, $channel_id)
     {
@@ -46,7 +46,7 @@ class AbstractChannel
         $this->protocolVersion = defined('AMQP_PROTOCOL') ? AMQP_PROTOCOL : '0.9.1';
         switch ($this->protocolVersion) {
         case '0.9.1':
-            self::$PROTOCOL_CONSTANTS_CLASS = 'PhpAmqpLib\Wire\Constants091';
+            self::$PROTOCOL_CONSTANTS_CLASS = 'Constants091';
             $c = self::$PROTOCOL_CONSTANTS_CLASS;
             $this->amqp_protocol_header = $c::$AMQP_PROTOCOL_HEADER;
             $this->protocolWriter = new Protocol091();
@@ -54,7 +54,7 @@ class AbstractChannel
             $this->methodMap = new MethodMap091();
             break;
         case '0.8':
-            self::$PROTOCOL_CONSTANTS_CLASS = 'PhpAmqpLib\Wire\Constants080';
+            self::$PROTOCOL_CONSTANTS_CLASS = 'Constants080';
             $c = self::$PROTOCOL_CONSTANTS_CLASS;
             $this->amqp_protocol_header = $c::$AMQP_PROTOCOL_HEADER;
             $this->protocolWriter = new Protocol080();
@@ -162,7 +162,7 @@ class AbstractChannel
         if ($this->auto_decode && isset($msg->content_encoding)) {
             try {
                 $msg->body = $msg->body->decode($msg->content_encoding);
-            } catch (\Exception $e) {
+            } catch (Exception $e) {
               if ($this->debug) {
                 MiscHelper::debug_msg("Ignoring body decoding exception: " . $e->getMessage());
               }

@@ -50,7 +50,7 @@ abstract class GenericContent
             return $this->delivery_info[$name];
         }
 
-        throw new \OutOfBoundsException("No '$name' property");
+        throw new OutOfBoundsException("No '$name' property");
     }
     /**
      * just return the $this::properties array.
@@ -67,7 +67,7 @@ abstract class GenericContent
         if(array_key_exists($name, $this->prop_types))
             $this->properties[$name] = $value;
         else
-            throw new \OutOfBoundsException("No '$name' property");
+            throw new OutOfBoundsException("No '$name' property");
     }
     /**
      * Given the raw bytes containing the property-flags and

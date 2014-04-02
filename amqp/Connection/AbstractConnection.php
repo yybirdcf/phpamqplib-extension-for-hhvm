@@ -61,7 +61,7 @@ class AbstractConnection extends AbstractChannel
     protected $close_on_destruct = true ;
 
     /**
-     * @var null|\PhpAmqpLib\Wire\IO\AbstractIO
+     * @var null|AbstractIO
      */
     protected $io = null;
 
@@ -139,7 +139,7 @@ class AbstractConnection extends AbstractChannel
                 // and shutdown quietly
                 try {
                     $this->close();
-                } catch (\Exception $e) { }
+                } catch (Exception $e) { }
             }
         }
     }
@@ -594,7 +594,7 @@ class AbstractConnection extends AbstractChannel
     }
 
     /**
-     * @return \PhpAmqpLib\Wire\IO\AbstractIO
+     * @return AbstractIO
      */
     protected function getIO() {
         return $this->io;
@@ -605,7 +605,7 @@ class AbstractConnection extends AbstractChannel
 	 *
 	 * @param AMQPReader $args
 	 */
-	protected function connection_blocked(\PhpAmqpLib\Wire\AMQPReader $args)
+	protected function connection_blocked(AMQPReader $args)
 	{
 		// Call the block handler and pass in the reason
 		$this->dispatch_to_handler($this->connection_block_handler, array($args->read_shortstr()));
@@ -616,7 +616,7 @@ class AbstractConnection extends AbstractChannel
 	 *
 	 * @param AMQPReader $args
 	 */
-	protected function connection_unblocked(\PhpAmqpLib\Wire\AMQPReader $args)
+	protected function connection_unblocked(AMQPReader $args)
 	{
 		// No args to an unblock event
 		$this->dispatch_to_handler($this->connection_unblock_handler, array());
