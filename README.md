@@ -13,8 +13,8 @@ hphp/system/php/amqp/Exception/AMQPIOException.php
 hphp/system/php/amqp/Exception/AMQPInvalidArgumentException.php
 hphp/system/php/amqp/Helper/MiscHelper.php
 hphp/system/php/amqp/Wire/AMQPWriter.php
-hphp/system/php/amqp/Wire/Protocol080.php
-hphp/system/php/amqp/Wire/Protocol091.php
+hphp/system/php/amqp/Wire/Constants080.php
+hphp/system/php/amqp/Wire/Constants091.php
 hphp/system/php/amqp/Wire/AMQPDecimal.php
 hphp/system/php/amqp/Wire/IO/AbstractIO.php
 hphp/system/php/amqp/Wire/IO/SocketIO.php
@@ -42,4 +42,3 @@ hphp/system/php/amqp/Connection/AMQPSocketConnection.php
 hphp/system/php/amqp/Exception/AMQPException.php
 hphp/system/php/amqp/Exception/AMQPChannelException.php
 hphp/system/php/amqp/Exception/AMQPConnectionException.php
-hphp/system/php/amqp/Wire/Constants080.php
