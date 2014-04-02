@@ -42,3 +42,4 @@ hphp/system/php/amqp/Connection/AMQPSocketConnection.php
 hphp/system/php/amqp/Exception/AMQPException.php
 hphp/system/php/amqp/Exception/AMQPChannelException.php
 hphp/system/php/amqp/Exception/AMQPConnectionException.php
+hphp/system/php/amqp/Wire/Constants080.php
