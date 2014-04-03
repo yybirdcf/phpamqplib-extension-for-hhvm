@@ -42,3 +42,22 @@ hphp/system/php/amqp/Connection/AMQPSocketConnection.php
 hphp/system/php/amqp/Exception/AMQPException.php
 hphp/system/php/amqp/Exception/AMQPChannelException.php
 hphp/system/php/amqp/Exception/AMQPConnectionException.php
+
+##description:##
+source code by [https://github.com/videlalvaro/php-amqplib](https://github.com/videlalvaro/php-amqplib)
+
+##demo:##
+With RabbitMQ running open two Terminals and on the first one execute the following commands to start the consumer:
+
+$ cd php-amqplib/demo
+$ php amqp_consumer.php
+Then on the other Terminal do:
+
+$ cd php-amqplib/demo
+$ php amqp_publisher.php some text to publish
+You should see the message arriving to the process on the other Terminal
+
+Then to stop the consumer, send to it the quit message:
+
+$ php amqp_publisher.php quit
+
