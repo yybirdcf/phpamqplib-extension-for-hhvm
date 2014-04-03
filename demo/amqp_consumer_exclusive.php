@@ -4,7 +4,6 @@
 // Set $queue name to test exclusiveness
 
 include(__DIR__ . '/config.php');
-use PhpAmqpLib\Connection\AMQPConnection;
 
 $exchange = 'fanout_exclusive_example_exchange';
 $queue = '';    // if empty let RabbitMQ create a queue name

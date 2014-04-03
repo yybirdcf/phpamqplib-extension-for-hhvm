@@ -1,8 +1,5 @@
 <?php
 
-use PhpAmqpLib\Connection\AMQPConnection;
-use PhpAmqpLib\Helper\Protocol\Wait091;
-
 include(__DIR__ . '/config.php');
 
 $queue        = 'msgs';

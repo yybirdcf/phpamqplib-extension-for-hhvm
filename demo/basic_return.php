@@ -1,10 +1,5 @@
 <?php
 
-require_once __DIR__.'/../vendor/autoload.php';
-
-use PhpAmqpLib\Message\AMQPMessage;
-use PhpAmqpLib\Connection\AMQPConnection;
-
 $connection = new AMQPConnection('localhost', 5672, 'guest', 'guest');
 $channel = $connection->channel();
 

@@ -1,7 +1,6 @@
 <?php
 
 include(__DIR__ . '/config.php');
-use PhpAmqpLib\Connection\AMQPConnection;
 
 $source = 'my_source_exchange';
 $dest = 'my_dest_exchange';

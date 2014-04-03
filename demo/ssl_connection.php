@@ -1,7 +1,6 @@
 <?php
 
 include(__DIR__ . '/config.php');
-use PhpAmqpLib\Connection\AMQPSSLConnection;
 
 define('CERTS_PATH',
   '/git/rabbitmqinaction/av_scratchwork/openssl');

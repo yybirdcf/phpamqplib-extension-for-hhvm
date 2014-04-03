@@ -4,7 +4,6 @@
 // amqp_consumer_fanout_2.php to test
 
 include(__DIR__ . '/config.php');
-use PhpAmqpLib\Connection\AMQPConnection;
 
 $exchange = 'fanout_example_exchange';
 $queue = 'fanout_group_2'; // Let RabbitMQ create a queue name

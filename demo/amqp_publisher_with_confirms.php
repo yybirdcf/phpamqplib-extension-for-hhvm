@@ -1,8 +1,5 @@
 <?php
 
-use PhpAmqpLib\Connection\AMQPConnection;
-use PhpAmqpLib\Message\AMQPMessage;
-
 include(__DIR__ . '/config.php');
 
 $exchange = 'someExchange';
