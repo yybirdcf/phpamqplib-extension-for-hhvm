@@ -3,7 +3,7 @@ phpamqplib-extension-for-hhvm
 
 phpamqplib extension for hhvm
 
-##file list:##
+##file list:(add file list to system/php.txt, add amqp dir to system/php/)##
 hphp/system/php/amqp/Exception/AMQPExceptionInterface.php
 hphp/system/php/amqp/Exception/AMQPBasicCancelException.php
 hphp/system/php/amqp/Exception/AMQPTimeoutException.php
