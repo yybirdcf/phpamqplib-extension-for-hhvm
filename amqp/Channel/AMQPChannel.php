@@ -498,7 +498,7 @@ class AMQPChannel extends AbstractChannel
         }
     }
 
-    /**
+/**
      * confirms a queue purge
      */
     protected function queue_purge_ok($args)
@@ -559,43 +559,6 @@ class AMQPChannel extends AbstractChannel
         $this->internal_ack_handler($delivery_tag, $multiple, $this->nack_handler);
     }
 
-    /**
-     * Handles the deletion of messages from this->publishedMessages and dispatches them to the $handler
-     *
-     * @param $delivery_tag
-     * @param $multiple
-     * @param $handler
-     */
-    protected function internal_ack_handler($delivery_tag, $multiple, $handler)
-    {
-        if ($multiple) {
-            $keys = $this->get_keys_less_or_equal($this->published_messages, $delivery_tag);
-
-            foreach ($keys as $key) {
-                $this->internal_ack_handler($key, false, $handler);
-            }
-        } else {
-            $message = $this->get_and_unset_message($delivery_tag);
-            $this->dispatch_to_handler($handler, array($message));
-        }
-    }
-
-    protected function get_keys_less_or_equal(array $array, $value)
-    {
-        $keys = array_reduce(
-            array_keys($array),
-            function ($keys, $key) use ($value) {
-                if (bccomp($key, $value) <= 0) {
-                    $keys[] = $key;
-                }
-
-                return $keys;
-            },
-            array()
-        );
-
-        return $keys;
-    }
 
     /**
      * reject one or several received messages.
@@ -619,14 +582,14 @@ class AMQPChannel extends AbstractChannel
             ));
     }
 
-    protected function basic_cancel_from_server(AMQPReader $args)
+protected function basic_cancel_from_server(AMQPReader $args)
     {
         $consumerTag = $args->read_shortstr();
 
         throw new AMQPBasicCancelException($consumerTag);
     }
 
-    /**
+/**
      * confirm a cancelled consumer
      */
     protected function basic_cancel_ok($args)
@@ -635,7 +598,7 @@ class AMQPChannel extends AbstractChannel
         unset($this->callbacks[$consumer_tag]);
     }
 
-    /**
+/**
      * start a queue consumer
      */
     public function basic_consume($queue="", $consumer_tag="", $no_local=false,
@@ -704,7 +667,7 @@ class AMQPChannel extends AbstractChannel
         }
     }
 
-    /**
+ /**
      * direct access to a queue
      * if no message was available in the queue, return null
      * @return null|AMQPMessage
